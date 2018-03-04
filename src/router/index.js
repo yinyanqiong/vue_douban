@@ -30,6 +30,7 @@ export default new Router({
     },
     {
       path: '/search_list',
+      // path: '/search_list',
       name:'search_list',
       component: search_list
     }

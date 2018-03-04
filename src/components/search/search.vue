@@ -1,17 +1,25 @@
 <template>
   <div class="search_wrap">
-    <input type="text" class="search_text">
-    <router-link class="link"  to="/movie_detail" >
-      <i class="iconfont icon-fangdajing"></i>
+    <input type="text" class="search_text" v-model="text">
+    <router-link class="link"   :to="{path:'/search_list',query: {q: q}}">
+      <i class="iconfont icon-fangdajing" @click="emitQ"></i>
     </router-link>
   </div>
 </template>
 <script>
   export default {
-    data() {
-      return {}
+    data:function(){
+        return {
+            text:"",
+            q:"none"
+        }
     },
-    components: {}
+    methods:{
+        emitQ:function(){
+            this.q=this.text;
+            console.log(this.q);
+        }
+    }
   }
 </script>
 <style lang="stylus">
