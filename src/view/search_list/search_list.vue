@@ -12,11 +12,6 @@
 </template>
 <script>
     export default {
-      methods:{
-         l:function(){
-             alert(l);
-         }
-      },
       data() {
           return {
               lists:[],
@@ -37,7 +32,6 @@
           },
           url:function(){
               return 'https://api.douban.com/v2/movie/search?q='+this.q;
-//                return 'https://api.douban.com/v2/movie/search'
           }
       }
     }
