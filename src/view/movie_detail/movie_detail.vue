@@ -73,7 +73,6 @@
         this.directors=response.data.directors;
         this.casts=response.data.casts;
         this.countries=response.data.countries;
-        console.log(this.casts[1].avatars.small);
       },(error) => {
         console.log(error);
       });
