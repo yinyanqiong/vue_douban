@@ -1,5 +1,5 @@
 <template>
-  <div @click="l">
+  <div>
     <div>{{title}}</div>
     <div>
       <ul>
@@ -12,11 +12,11 @@
 </template>
 <script>
     export default {
-        methods:{
-           l:function(){
-               alert(l);
-           }
-        },
+      methods:{
+         l:function(){
+             alert(l);
+         }
+      },
       data() {
           return {
               lists:[],

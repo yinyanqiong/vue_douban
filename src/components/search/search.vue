@@ -1,8 +1,8 @@
 <template>
   <div class="search_wrap">
-    <input type="text" class="search_text" v-model="text">
-    <router-link class="link"   :to="{path:'/search_list',query: {q: q}}">
-      <i class="iconfont icon-fangdajing" @click="emitQ"></i>
+    <input type="text" class="search_text" v-model="q">
+    <router-link class="link"   :to="{path:'/search_list',query: {q: q}}" @click.native="flushCom">
+      <i class="iconfont icon-fangdajing"></i>
     </router-link>
   </div>
 </template>
@@ -10,14 +10,12 @@
   export default {
     data:function(){
         return {
-            text:"",
-            q:"none"
+            q:""
         }
     },
     methods:{
-        emitQ:function(){
-            this.q=this.text;
-            console.log(this.q);
+        flushCom:function(){
+            this.$router.go(0);
         }
     }
   }
