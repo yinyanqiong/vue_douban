@@ -4,7 +4,7 @@
       <div class="movie_top_wrap">
         <div class="movie_top">
           <span class="movie_title">正在热映电影</span>
-          <router-link class="link more" to="/in_theaters" >更多</router-link>
+          <router-link class="link more" :to="'/movie_type/'+type[0]" >更多</router-link>
         </div>
       </div>
       <div class="movie_detail_wrap">
@@ -22,7 +22,7 @@
       <div class="movie_top_wrap" id="movie_top_wrap_coming">
         <div class="movie_top">
           <span class="movie_title">即将上映电影</span>
-          <router-link class="link more" to="/coming_soon" >更多</router-link>
+          <router-link class="link more" :to="'/movie_type/'+type[1]" >更多</router-link>
         </div>
       </div>
       <div class="movie_detail_wrap">
@@ -44,7 +44,8 @@
       data() {
         return {
           theaters:[],
-          coming:[]
+          coming:[],
+          type:['in_theaters','coming_soon']
         }
       },
       mounted() {
