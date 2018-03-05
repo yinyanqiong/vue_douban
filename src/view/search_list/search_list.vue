@@ -5,20 +5,20 @@
     <div class="search_list_wrap">
       <ul class="search_list">
         <li v-if="lists" v-for="list in lists" class="search_list_item" >
-          <img class="search_img" :src="list.images.small" alt="" width="100" height="140">
-          <div class="search_des">
-            <h2 class="search_des_title">
-              {{list.title}}
-            </h2>
-            <div class="search_derectors">
-              导演：<span v-for="derector in list.directors" class="search_derector">{{derector.name}} </span>
+            <router-link class="link"  :to="'/movie_detail/'+list.id" ><img class="search_img" :src="list.images.small" alt="" width="100" height="140"></router-link>
+            <div class="search_des">
+              <h2 class="search_des_title">
+                {{list.title}}
+              </h2>
+              <div class="search_derectors">
+                导演：<span v-for="derector in list.directors" class="search_derector">{{derector.name}} </span>
+              </div>
+              <p class="list_year">上映时间：{{list.year}}</p>
+              <p>看过人数：{{list.collect_count}}</p>
+              <div class="search_rating" v-if="list.rating.average">
+                评分：<star :size="36" :score="list.rating.average" class="search_star" ></star><span class="search_score" >{{list.rating.average}}</span>
+              </div>
             </div>
-            <p class="list_year">上映时间：{{list.year}}</p>
-            <p>看过人数：{{list.collect_count}}</p>
-            <div class="search_rating" v-if="list.rating.average">
-              评分：<star :size="36" :score="list.rating.average" class="search_star" ></star><span class="search_score" >{{list.rating.average}}</span>
-            </div>
-          </div>
         </li>
       </ul>
     </div>
