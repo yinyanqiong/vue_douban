@@ -12,7 +12,7 @@
           <star :size="36" :score="this.score" class="one_movie_star" v-if="this.score"></star><span class="movie_score" v-if="this.score" >{{score}}</span><span class="count_ratings" v-if="this.one_movie.collect_count">{{one_movie.collect_count}}人评价</span>
         </div>
         <div class="one_movie_content" >
-          138分钟 / <span v-for="genre in genres">{{genre}} / </span> <span v-for="director in directors">{{director.name}}(导演) / </span><span v-for="cast in casts">{{cast.name}} / </span> {{one_movie.year}} 年 (<span v-for="country in countries">{{country}} </span>) 上映
+          <span v-for="genre in genres">{{genre}} / </span> <span v-for="director in directors">{{director.name}}(导演) / </span><span v-for="cast in casts">{{cast.name}} / </span> {{one_movie.year}} 年 (<span v-for="country in countries">{{country}} </span>) 上映
         </div>
       </div>
     </div>
