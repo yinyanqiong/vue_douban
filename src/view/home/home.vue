@@ -36,16 +36,16 @@
         </ul>
       </div>
     </div>
-   <!-- <div>
+    <div>
       <div class="movie_top_wrap" id="movie_top_wrap_us_box">
         <div class="movie_top">
-          <span class="movie_title">北美票房榜</span>
+          <span class="movie_title">top250</span>
           <router-link class="link more" :to="'/movie_type/'+type[2]" >更多</router-link>
         </div>
       </div>
       <div class="movie_detail_wrap">
         <ul class="movie_detail">
-          <li class="movie_item" v-for="item in us_box">
+          <li class="movie_item" v-for="item in top250">
             <router-link class="link"  :to="'/movie_detail/'+item.id" >
               <img class="movie_img" width="100" height="142" :src="item.images.large" alt="">
               <p class="movie_name">{{item.title}}</p>
@@ -53,18 +53,18 @@
           </li>
         </ul>
       </div>
-    </div>-->
+    </div>
   </div>
 </template>
 <script>
   import VueScrollBar from 'smooth-scrollbar'
-    export default {
+  export default {
       data() {
         return {
           theaters:[],
           coming:[],
-          us_box:[],
-          type:['in_theaters','coming_soon','us_box']
+          top250:[],
+          type:['in_theaters','coming_soon','top250']
         }
       },
       mounted() {
@@ -83,11 +83,11 @@
         },(error) => {
           console.log(error);
         }) ;
-        /*this.$http.jsonp('https://api.douban.com/v2/movie/us_box',{params:d}).then((response) => {
-            this.us_box=response.data.subjects;
+        this.$http.jsonp('https://api.douban.com/v2/movie/top250',{params:d}).then((response) => {
+            this.top250=response.data.subjects;
         },(error) => {
             console.log(error);
-        }) ;*/
+        }) ;
       }
     }
 </script>
