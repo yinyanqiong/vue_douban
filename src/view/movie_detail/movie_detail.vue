@@ -26,8 +26,8 @@
     </div>
     <div class="one_movie_summary">
       <h3 class="sub_title">{{one_movie.title}}剧情简介</h3>
-      <p class="summary">{{one_movie.summary}}</p>
-      <!--<span>(展开)</span>-->
+      <p class="summary" :class="{summary_show:!show_hid}">{{one_movie.summary}}</p>
+      <span class="show_hide" @click="show_hide" v-if="show_hid">(展开)</span>
     </div>
     <div class="one_movie_casts">
       <h3 class="sub_title">影人</h3>
@@ -38,7 +38,7 @@
             <p class="casts_item_name">{{director.name}}</p>
           </li>
           <li class="casts_item" v-for="cast in casts">
-            <!--<img :src="cast.avatars.large" alt=""  class="casts_item_img" width="75" height="107">-->
+            <!--<img :src="cast.avatars.small" alt=""  class="casts_item_img" width="75" height="107">-->
             <p class="casts_item_name">{{cast.name}}</p>
           </li>
         </ul>
@@ -55,6 +55,7 @@
   export default {
     data() {
       return {
+        show_hid:true,
         one_movie:{},
         image:"",
         score:0,
@@ -87,6 +88,11 @@
     },
     components: {
       star
+    },
+    methods:{
+        show_hide:function(){
+            this.show_hid=!this.show_hid;
+        }
     }
   }
 </script>
@@ -153,20 +159,31 @@
   .one_movie_summary
     padding:0 18px 14px 18px;
     font-size:15px;
+    position:relative;
     .sub_title
       color:#aaa;
       height:24px;
       line-height:24px;
       padding-bottom:10px;
     .summary
+      padding-right:30px;
       font-size:14px;
       color:#494949;
       line-height:18px;
-      height:54px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-
+      /*height:54px;*/
+      display:-webkit-box;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:3;    //显示的行数
+      overflow:hidden;
+      text-overflow:ellipsis;
+    .summary_show
+      -webkit-line-clamp:99;    //显示的行数
+    .show_hide
+      color:#42bd56
+      font-size:14px;
+      position:absolute;
+      bottom:17px;
+      right:18px;
   .one_movie_casts
     padding:0 18px 14px 18px;
     font-size:15px;
